@@ -1,0 +1,48 @@
+.game-field {
+    display: grid;
+    aspect-ratio: 1 / 1;
+    gap: 4px;
+}
+
+.game-field-3 {
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+.game-field-4 {
+    grid-template-columns: repeat(4, 1fr);
+    
+}
+
+.game-field-5 {
+    grid-template-columns: repeat(5, 1fr);
+    
+}
+
+.game-field-6 {
+    grid-template-columns: repeat(6, 1fr);
+    
+}
+
+.game-field-7 {
+    grid-template-columns: repeat(7, 1fr);
+    
+}
+
+.game-sell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.game-sell-red {
+    background-color: rgb(255, 192, 192);
+}
+
+.game-sell-green {
+    background-color: rgb(201, 255, 201);
+}
