@@ -1,127 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Криптовалюта - Bitcoin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+    <style>
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .navbar-dark-mode {
+            background-color: #1f1f1f !important;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-mode px-3">
+        <a class="navbar-brand" href="#">Crypto Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">ТОП 10</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">О нас</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Новости</a></li>
+            </ul>
+            <form class="d-flex me-2">
+                <input class="form-control me-2" type="search" placeholder="Поиск">
+                <button class="btn btn-outline-light" type="submit">Найти</button>
+            </form>
+            <button class="btn btn-primary me-2">Войти/Регистрация</button>
+            <button class="btn btn-secondary" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav><style>
+        body {
+            background-color: #121212;
+            color: #fff;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .crypto-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .chart-placeholder {
+            background: #1e1e1e;
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-    <div class="container py-3">
-        <div class="row mb-3">
-            <div class="col">
-                <h1 class="text-center">Игра "Числа по порядку"</h1>
-            </div>
-        </div>
-        <div class="row mb-3" style="display: none;" id="startGame">
-            <div class="col">
-        
-                <form>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Введите имя</label>
-                        <input type="text" class="form-control" id="name" name="name" >
-                      </div>
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Выберите размер поля</label>
-                        <select class="form-select" name="size" id="size">
-                            <option value="3" selected>3 x 3</option>
-                            <option value="4">4 x 4</option>
-                            <option value="5">5 x 5</option>
-                            <option value="6">6 x 6</option>
-                            <option value="7">7 x 7</option>
-                          </select>
-                          
-                      </div>
-                    <div class="mb-3">
-                         <button class="btn btn-primary">Начать игру</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row mb-3" style="display: none;" id="game">
-            <div class="col-3">
-                <h5>Топ 5 результаты</h5>
-                <ol class="list-group list-group-numbered" id="top">
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                      <div class="ms-2 me-auto">
-                        <div class="fw-bold">Иван (3 x 3)</div>
-                        12.12.2024 11:00
-                      </div>
-                      <span class="badge text-bg-primary rounded-pill">14,3</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                          <div class="fw-bold">Иван (3 x 3)</div>
-                          12.12.2024 11:00
-                        </div>
-                        <span class="badge text-bg-primary rounded-pill">14,3</span>
-                      </li>
-                  </ol>
-            </div>
-            <div class="col-6">
-                <a class="card">
-                <div class="card-header" id="showTimer">
-                  Игровое поле
-                </div>
-                <div id="timer">
-                  00:00
-                </div>
 
-                <div class="card-body">
-                  <div class="game-field game-field-3">
-                    <div class="game-sell game-sell-red">1</div>
-                    <div class="game-sell">6</div>
-                    <div class="game-sell">2</div>
-                    <div class="game-sell">9</div>
-                    <div class="game-sell">4</div>
-                    <div class="game-sell game-sell-green">5</div>
-                    <div class="game-sell">7</div>
-                    <div class="game-sell">8</div>
-                    <div class="game-sell">3</div>
-                  </div>  
-                </div>
-              </a>
-            </div>
-            <div class="col-3">
-                    <h5>Все результаты</h5>
-                    <ol class="list-group list-group-numbered" id="history">
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                          <div class="ms-2 me-auto">
-                            <div class="fw-bold">Иван (3 x 3)</div>
-                            12.12.2024 11:00
-                          </div>
-                          <span class="badge text-bg-primary rounded-pill">14,3</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                              <div class="fw-bold">Иван (3 x 3)</div>
-                              12.12.2024 11:00
-                            </div>
-                            <span class="badge text-bg-primary rounded-pill">14,3</span>
-                          </li>
-                      </ol>
-                </div>
-            </div>
+    <div class="container">
+        <h1 class="text-center">Bitcoin (BTC)</h1>
+
+        <div class="crypto-info">
+            <h2>Цена: $45,000</h2>
+            <p>Изменение за 24ч: <span class="text-success">+3.5%</span></p>
         </div>
-        <div class="row mb-3" style="display: none;" id="stopGame">
-            <div class="col">
-                <div class="card">
-                    Результат игры
-                </div>
-                <div class="card-body">
-                    <p id="result_name">Имя:<strong>Иван</strong></p>
-                    <p id="result_size">Размер поля:<strong>3 x 3</strong></p>
-                    <p id="result_time">Затраченое время (с):<strong>14.3</strong></p>
-                    <button class="btn btn-success">Играть снова</button>
-                    
-                </div>
-            </div>
+
+        <div class="chart-placeholder">
+            <p>График цены (здесь будет реальный график)</p>
         </div>
+
+        <h3 class="mt-4">О Bitcoin</h3>
+        <p>Bitcoin — первая и самая известная криптовалюта, созданная в 2009 году. Это децентрализованная цифровая валюта, работающая на блокчейне.</p>
+        
+        <a href="index.html" class="btn btn-primary mt-3">Назад</a>
     </div>
 
-
-    <script src="main.js">
-    </script>
 </body>
 </html>
